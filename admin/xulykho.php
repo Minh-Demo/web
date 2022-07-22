@@ -24,8 +24,6 @@ if (isset($_POST['capnhatsoluong'])) {
 
     $soluong = $_POST['soluong'];
 
-    // kiểm tra có chọn ảnh không
-
     $sql_update = "UPDATE tbl_sanpham SET sanpham_soluong='$soluong' WHERE sanpham_id = '$id_update'";
     mysqli_query($con, $sql_update);
     header("Location:xulykho.php");
@@ -108,6 +106,8 @@ if (isset($_POST['capnhatsoluong'])) {
             <form class="form-inline" method="GET">
                 <input class="form-control mr-sm-2" name="search_product" type="search" placeholder="Tìm kiếm theo danh mục" aria-label="Search" required><br>
                 <button class="btn my-2 my-sm-0" type="submit">Tìm kiếm</button>
+                <button style="margin-left: 20px;" class="btn my-2 my-sm-0" type="submit"><a href="?nhapkho=1" style="color:#000;">Sắp hết hàng</a></button><br>
+
                 <button style="margin-left: 20px;" class="btn my-2 my-sm-0" type="submit"><a href="xulykho.php" style="color:#000;">Hiển thị tất cả sản phẩm</a></button><br>
             </form><br>
 
@@ -124,7 +124,7 @@ if (isset($_POST['capnhatsoluong'])) {
                 <?php
                 }
                 ?>
-            </select><br>
+            </select>
             
             
             <!-- Liệt kê ds các sản phẩm -->
@@ -134,6 +134,7 @@ if (isset($_POST['capnhatsoluong'])) {
             //  WHERE tbl_sanpham.category_id = tbl_category.category_id AND tbl_brands.brand_id = tbl_sanpham.brand_id ORDER BY sanpham_id DESC");
             $timkiem = isset($_GET['search_product']) ? $_GET['search_product'] : "";
             $thuonghieu = isset($_GET['thuonghieu']) ? $_GET['thuonghieu'] : "";
+            $nhap_hang = isset($_GET['nhapkho']) ? $_GET['nhapkho'] : "";
             if ($timkiem) {
                 $sql_select_sanpham = mysqli_query($con, "SELECT * FROM tbl_sanpham,tbl_category,tbl_brands
                                             WHERE tbl_sanpham.category_id = tbl_category.category_id AND tbl_brands.brand_id = tbl_sanpham.brand_id AND category_name LIKE '%$timkiem%' 
@@ -141,6 +142,10 @@ if (isset($_POST['capnhatsoluong'])) {
             }elseif($thuonghieu){
                 $sql_select_sanpham = mysqli_query($con, "SELECT * FROM tbl_sanpham,tbl_category,tbl_brands
                                         WHERE tbl_sanpham.category_id = tbl_category.category_id AND tbl_brands.brand_id = tbl_sanpham.brand_id AND tbl_sanpham.brand_id = $thuonghieu
+                                        ORDER BY tbl_sanpham.sanpham_id DESC");
+            }elseif($nhap_hang){
+                $sql_select_sanpham = mysqli_query($con, "SELECT * FROM tbl_sanpham,tbl_category,tbl_brands
+                                        WHERE tbl_sanpham.category_id = tbl_category.category_id AND tbl_brands.brand_id = tbl_sanpham.brand_id AND tbl_sanpham.sanpham_soluong <= 10
                                         ORDER BY tbl_sanpham.sanpham_id DESC");
             }
             else {

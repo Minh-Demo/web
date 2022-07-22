@@ -82,9 +82,10 @@ include('../db/connect.php');
   $sql_thongke = "SELECT * FROM tbl_thongke WHERE ngaydat='" . $now . "'"; //chọn thống ke dựa vào ngày dat
   $query_thongke = mysqli_query($con, $sql_thongke); //truy vấn
   $row = mysqli_fetch_array($query_thongke);
+
   ?>
 
-  
+
   <!-- Thống kê chi tiết -->
   <?php
   if (mysqli_num_rows($query_thongke) != 0) {
@@ -102,22 +103,24 @@ include('../db/connect.php');
           </div>
         </div>
         <!-- col-6 -->
+        
+        <!-- col-6 -->
         <div class="col-md-3">
-          <div class="widget-small info coloured-icon"><i class='icon bx bxs-data fa-3x'></i>
+          <div class="widget-small warning coloured-icon"><i class='icon bx bxs-data fa-3x'></i>
             <div class="info">
-              <h4>Số lượng sản phẩm bán ra</h4>
-              <p><b><?php echo $row['soluongban'] ?> sản phẩm</b></p>
-              <p class="info-tong">Tổng số sản phẩm được bán ra trong ngày.</p>
+              <h4>Doanh thu</h4>
+              <p><b><?php echo number_format($row['doanhthu']) . ' vnđ' ?> </b></p>
+              <p class="info-tong">Tổng doanh thu trong ngày.</p>
             </div>
           </div>
         </div>
         <!-- col-6 -->
         <div class="col-md-3">
-          <div class="widget-small warning coloured-icon"><i class='icon bx bxs-shopping-bags fa-3x'></i>
+          <div class="widget-small info coloured-icon"><i class='icon bx bxs-data fa-3x'></i>
             <div class="info">
-              <h4>Doanh thu</h4>
-              <p><b><?php echo number_format($row['doanhthu']) . ' vnđ' ?> </b></p>
-              <p class="info-tong">Tổng doanh thu trong ngày.</p>
+              <h4>Lợi nhuận</h4>
+              <p><b><?php echo number_format(($row['doanhthu'])-($row['nhaphang'])) . ' vnđ' ?> </b></p>
+              <p class="info-tong">Lợi nhuận trong ngày.</p>
             </div>
           </div>
         </div>
@@ -147,23 +150,24 @@ include('../db/connect.php');
             </div>
           </div>
         </div>
+       
         <!-- col-6 -->
         <div class="col-md-3">
-          <div class="widget-small info coloured-icon"><i class='icon bx bxs-data fa-3x'></i>
-            <div class="info">
-              <h4>Số lượng sản phẩm bán ra</h4>
-              <p><b>0 sản phẩm</b></p>
-              <p class="info-tong">Tổng số sản phẩm được bán ra trong ngày.</p>
-            </div>
-          </div>
-        </div>
-        <!-- col-6 -->
-        <div class="col-md-3">
-          <div class="widget-small warning coloured-icon"><i class='icon bx bxs-shopping-bags fa-3x'></i>
+          <div class="widget-small warning coloured-icon"><i class='icon bx bxs-data fa-3x'></i>
             <div class="info">
               <h4>Doanh thu</h4>
               <p><b> 0 </b></p>
               <p class="info-tong">Tổng doanh thu trong ngày.</p>
+            </div>
+          </div>
+        </div>
+         <!-- col-6 -->
+         <div class="col-md-3">
+          <div class="widget-small info coloured-icon"><i class='icon bx bxs-data fa-3x'></i>
+            <div class="info">
+              <h4>Lợi nhuận</h4>
+              <p><b>0</b></p>
+              <p class="info-tong">Lợi nhuận trong ngày.</p>
             </div>
           </div>
         </div>
@@ -324,7 +328,9 @@ include('../db/connect.php');
             dataType: "JSON", //trả về kiểu JSON
             // data từ ngày đến ngày
             data: {
-              from_date:from_date,to_date:to_date,_token:_token
+              from_date: from_date,
+              to_date: to_date,
+              _token: _token
             },
             success: function(data) {
               char.setData(data); //đổ dữ liệu vào biểu đồ
@@ -339,7 +345,7 @@ include('../db/connect.php');
           var thoigian = $(this).val();
           if (thoigian == '3ngay') { //thời gian theo ngày 
             var text = '3 ngày qua';
-          } else if (thoigian == '7ngay') {  
+          } else if (thoigian == '7ngay') {
             var text = '7 ngày qua';
           } else if (thoigian == '28ngay') {
             var text = '28 ngày qua';
