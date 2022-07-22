@@ -56,8 +56,8 @@
 					$soluong = $_POST['soluong'][$i];
 					$sql_update = mysqli_query($con,"UPDATE tbl_giohang SET soluong = '$soluong' WHERE sanpham_id = '$sanpham_id'");
 				}else{
-					//  còn lại nối chuỗi '.$row_sanphamcn['sanpham_soluong'].'
-					echo '<script>alert("Số lượng đặt hiện tại vượt quá số lượng sản phẩm. ")</script>';	
+					//  conlai'.$row_sanphamcn['sanpham_soluong'].'
+					echo '<script>alert("Số lượng đặt hiện tại vượt quá số lượng sản phẩm.")</script>';	
 				}
 
 			

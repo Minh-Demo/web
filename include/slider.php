@@ -17,10 +17,10 @@
     <div class="carousel-item">
       <img class="d-block w-100" src="https://cdn.tgdd.vn/Files/2018/08/31/1113936/qua-da-dung-thu-30-ngay-mien-phi-samsung-tai-dien-may-xanh-1.png"height="450" alt="Second slide">
     </div>
-	<div class="carousel-item">
-      <img class="d-block w-100" src="https://1.bp.blogspot.com/-13r7UMATTGY/YIjIbPNZWvI/AAAAAAAAEWs/N0qzIeDGYAER-gOZ-zQsO9yIF_JXh3pUQCLcBGAsYHQ/s1161/MAY%2BLANH%2BTAM%2BKI.PNG" height="450" alt="Third slide">
+	<!-- <div class="carousel-item">
+      <img class="d-block w-100" src="https://khohangdienmay.vn/public/images/banner-tet.jpg" height="450" alt="Third slide">
     </div>
-  </div>
+  </div> -->
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>

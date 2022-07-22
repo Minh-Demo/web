@@ -318,7 +318,7 @@ include('../db/connect.php');
         // Lọc từ ngày---đến ngày click vào nút lọc kq
         $('#btn-dashboard-filter').click(function() {
           var _token = $('input[name="_token"]').val();
-          // biến từ ngày đến ngàyy
+          // biến dựa vào id 'datepicker' từ ngày đến ngàyy
           var from_date = $('#datepicker').val();
           var to_date = $('#datepicker2').val();
 

@@ -26,7 +26,7 @@
 	<!-- Custom-Files -->
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- Bootstrap css -->
-	<link rel="stylesheet" href="./css/style_new.css">
+	<link rel="stylesheet" href="./css/style_1.css">
 	<!-- <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /> -->
 	<!-- Main css -->
 	<link rel="stylesheet" href="css/fontawesome-all.css">
