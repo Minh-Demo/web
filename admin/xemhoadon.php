@@ -122,6 +122,8 @@ include('../db/connect.php');
                 <h5>Tổng phải thanh toán: <?php echo number_format($total) . 'vnđ' ?></h5>
                 <button class="btn btn-success"><a href="xulydonhang.php" style="color: #fff;"> Quay lại  </a></button>
                 <button class="btn btn-primary"><a href="indonhang_1.php?madonhang=<?php echo $row['madonhang']?>" style="color: #fff;"> In hóa đơn  </a></button>
+                <button class="btn btn-primary"><a href="inbaohanh.php?madonhang=<?php echo $row['madonhang']?>" style="color: #fff;"> In phiếu bảo hành  </a></button>
+
             </div>
         </div>
     </div>
